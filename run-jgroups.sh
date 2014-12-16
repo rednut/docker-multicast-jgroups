@@ -4,10 +4,20 @@ set +e
 cd /opt
 JAR=/opt/jgroups-3.3.3.Final.jar
 
-ACTION=${1:-${ACTION:-receiver}}
+ACTION=${ACTION:-receiver}
+
+case "$1" in
+sender)	ACTION=$1
+	echo "OVERRIDE ACTION ARG: $ACTION"
+	;;
+receiver) ACTION=$1
+	echo "OVERRIDE ACTION ARG: $ACTION"
+	;;
+*)	echo "no cli args: try sender or reciver if u like!"
+	;;
+esac
 
 CLASS=org.jgroups.tests.McastReceiverTest
-
 
 if [ $ACTION == "sender" ]; then
 	ACTION=receiver

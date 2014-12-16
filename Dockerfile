@@ -10,11 +10,6 @@ ADD ./run-jgroups.sh /opt/run-jgroups.sh
 RUN chmod +x /opt/run-jgroups.sh
 
 EXPOSE 45566
-ENV MCAST_ADDR 231.12.21.132
-ENV MCAST_PORT 45566
-
-# or sender instead
-CMD [ "receiver" ]
 
 ENTRYPOINT [ "/opt/run-jgroups.sh" ]
 
